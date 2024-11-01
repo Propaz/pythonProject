@@ -50,3 +50,5 @@ if __name__ == "__main__":
 
     k = service_main.get_all_essences()
     print(k)
+
+    x = service_orders.read_order(str(uuid4()))

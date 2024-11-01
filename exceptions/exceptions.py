@@ -1,0 +1,2 @@
+class ErrorOrderNotFound(Exception):
+    pass

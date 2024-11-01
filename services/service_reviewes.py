@@ -1,4 +1,4 @@
-from typing import List, Set
+from typing import List
 from uuid import UUID
 
 from models.order_review import OrderReview

@@ -11,8 +11,8 @@ def create_order(order: Order):
     db[order.key] = order
 
 
-def read_order(key: UUID) -> Order:
-    return db[key]
+def read_order(key: UUID) -> Order | None:
+    return db.get(key)
 
 
 def read_all_orders() -> List[Order]:

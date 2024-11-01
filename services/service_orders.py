@@ -1,6 +1,7 @@
 from typing import List
 from uuid import UUID
 
+from exceptions.exceptions import ErrorOrderNotFound
 from models.order import Order
 from models.package import Package
 from repositories import repository_orders
@@ -11,7 +12,10 @@ def create_order(order: Order):
 
 
 def read_order(key: UUID) -> Order:
-    return repository_orders.read_order(key)
+    order = repository_orders.read_order(key)
+    if order is None:
+        raise ErrorOrderNotFound(f"Order with uuid: {key} not found")
+    return order
 
 
 def read_all_orders_by_package(package: Package):
