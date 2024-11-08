@@ -1,6 +1,8 @@
 from typing import List
 from uuid import UUID
 
+from loguru import logger
+
 from models.order_review import OrderReview
 from repositories import repository_review
 
@@ -32,4 +34,5 @@ def delete_review(key: UUID):
 
 
 def delete_all_reviews():
+    logger.info("-> deleting all reviews")
     repository_review.delete_all_reviews()

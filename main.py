@@ -1,5 +1,8 @@
 from uuid import uuid4
 
+from loguru import logger
+logger.add("file_{time}.log")
+
 from models.order import Order
 from models.order_review import OrderReview
 from models.package import Package
@@ -36,7 +39,12 @@ if __name__ == "__main__":
     service_reviewes.create_review(review)
 
     a = service_reviewes.read_review(order_key)
-    print(a)
+
+    logger.info("test")
+    logger.error("test")
+    logger.warning("test")
+    logger.debug("test")
+
     b = service_orders.read_order(order_key)
     print(b)
 

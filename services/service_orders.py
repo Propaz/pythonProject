@@ -1,6 +1,8 @@
 from typing import List
 from uuid import UUID
 
+from loguru import logger
+
 from exceptions.exceptions import ErrorOrderNotFound
 from models.order import Order
 from models.package import Package
@@ -13,8 +15,11 @@ def create_order(order: Order):
 
 def read_order(key: UUID) -> Order:
     order = repository_orders.read_order(key)
+    logger.info(f"--> try to read order by orderKey: {key}")
     if order is None:
-        raise ErrorOrderNotFound(f"Order with uuid: {key} not found")
+        msg = f"Order with uuid: {key} not found"
+        logger.error(msg)
+        raise ErrorOrderNotFound(msg)
     return order
 
 
